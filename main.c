@@ -12,7 +12,7 @@ char *pf;
 int w, h, score = 1;
 
 int main( int argc, char *argv[] ) {
-	if( system( "mplayer loader.flv" ) > 0 ) {
+	if( system( "mplayer -fs loader.flv" ) > 0 ) {
 		printf( "lolnab\nu cunt pley da veed so u cunt pley THE GAME!\n" );
 		return 1;
 	}
