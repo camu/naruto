@@ -4,6 +4,15 @@ peli asennetaan niin, että se käännetään hyvällä
 taikka huonolla c-kääntäjällä.
 kannattaa muistaa linkata curses.
 
+peli suoritetaan suorittamalla käännetty tiedosto.
+jos tykkää niin ykkösargumentiksi voi laittaa
+pf-tiedoston tai minkä tahansa tiedoston.
+
+esimerkkejä (olkoon binäärin nimi a.out):
+ 1:	./a.out
+ 2:	./a.out derp.pf
+ 3:	./a.out pamela_nude.jpg.exe
+
 pelissä tärkeintä on se, että olet naruto.
 sitä pelataan niin, että q-kirjain lopettaa pelin.
 muut komennot:	vasen nuoli liikuttaa vasemmalle,
