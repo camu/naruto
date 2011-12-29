@@ -1,0 +1,17 @@
+pf on paras tasoloikkapeli, koska siinä hypitään alas, ei ylös.
+
+peli asennetaan niin, että se käännetään hyvällä
+taikka huonolla c-kääntäjällä.
+kannattaa muistaa linkata curses.
+
+pelissä tärkeintä on se, että olet naruto.
+sitä pelataan niin, että q-kirjain lopettaa pelin.
+muut komennot:	vasen nuoli liikuttaa vasemmalle,
+		oikea nuoli liikuttaa oikealle,
+		alasnuoli aiheuttaa hypyn.
+
+pelin tarkoituksena on osua V-kirjaimeen.
+yritä osua *-merkkiin, jos uskallat.
+jos osut !-merkkiin, saat pisteitä.
+
+T: aku ankka
