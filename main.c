@@ -8,7 +8,6 @@ int gameloop( );
 
 #define __default_pf "def.pf"
 
-//#define cheat_code
 #ifdef cheat_code
 	char cheat = 0;
 #endif
