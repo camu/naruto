@@ -1,5 +1,9 @@
 pf on paras tasoloikkapeli, koska siinä hypitään alas, ei ylös.
 
+peli on riippuvainen c-kääntäjästä,
+curses-kirjastosta ja
+flv-kykyisestä mplayeristä.
+
 peli asennetaan niin, että se käännetään hyvällä
 taikka huonolla c-kääntäjällä.
 kannattaa muistaa linkata curses.
