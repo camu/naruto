@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdio.h>
 
-void loadpf( char *_fname );
+void loadpf( char * );
 int gameloop( );
 
 #define __default_pf "def.pf"
@@ -16,8 +16,11 @@ char *pf;
 int w, h, score = 1;
 
 int main( int argc, char *argv[] ) {
-	if( system( "mplayer -fs loader.flv" ) > 0 ) {
-		printf( "lolnab\nu cunt pley da veed so u cunt pley THE GAME!\n" );
+	if( argc == 2 ) loadpf( argv[1] );
+	else loadpf( __default_pf );
+
+	if( system( "mplayer -fs loader.flv &> /dev/null" ) > 0 ) {
+		printf( "lolnab\nu cunt pley da vidya so u cunt pley THE GAME!\n" );
 		return 1;
 	}
 
@@ -28,8 +31,6 @@ int main( int argc, char *argv[] ) {
 	nonl( );
 	keypad( stdscr, TRUE );
 
-	if( argc == 2 ) loadpf( argv[1] );
-	else loadpf( __default_pf );
 
 	int end = gameloop( );
 
@@ -52,17 +53,28 @@ int main( int argc, char *argv[] ) {
 void loadpf( char *_fname ) {
 	FILE *fp = fopen( _fname, "r" );
 
-	fseek( fp, 0, SEEK_END );
-	int l = ftell( fp );
+	{ char c = fgetc( fp ); for( h = 0; c != EOF; c = fgetc( fp ) ) if( c == '\n' ) h++; }
+	rewind( fp );
+	{ char c = fgetc( fp ); for( w = 0; c != '\n'; c = fgetc( fp ), w++ ); }
 	rewind( fp );
 
-	char c;
-	pf = malloc( l+1 );
-	{ int i; for( i = 0; i < l; i++ ) { c = fgetc( fp ); ( c != '\n' ) ? ( pf[i] = c ) : ( i--, h++ ); } }
-	pf = realloc( pf, strlen( pf )+1 );
-
-	rewind( fp );
-	for( w = 0; w < l; w++ ) if( fgetc( fp ) == '\n' ) break;
+	pf = malloc( h*w+1 );
+	{
+		int j, i;
+		char c = fgetc( fp );
+		for( j = 0; j < h; j++ ) {
+			for( i = 0; i < w; i++, c = fgetc( fp ) ) {
+				if( c != '\n' ) {
+					pf[j*w+i] = c;
+					continue;
+				} else {
+					pf[j*w+i] = ' ';
+					ungetc( c, fp );
+				}
+			}
+			c = fgetc( fp );
+		}
+	}
 
 	fclose( fp );
 }
