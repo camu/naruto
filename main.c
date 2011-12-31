@@ -15,11 +15,11 @@ int gameloop( );
 #define __default_pf "def.pf"
 
 #ifdef cheat_code
-	char cheat = 0;
+	char cheat;
 #endif
 
 char *pf = NULL;
-int w = 0, h = 0, totalscore = 0, score = 0;
+int w = 0, h = 0, totalscore = 0, score;
 
 naruto *narutos = NULL;
 int nnarutos = 0;
@@ -138,16 +138,18 @@ int loadpf( char *_fname ) {
 }
 
 int gameloop( ) {
-	char q = 0;
+	char q = 0, dir = 0;
 	int c;
 	for( ;!q; ) {
 		move( h, w+1 );
 		c = getch( );
 		switch( c ) {
 			case KEY_LEFT:
+				dir = -1;
 				{ int i; for( i = 0; i < nnarutos; i++ ) if( pf[ narutos[i].y*w+narutos[i].x-1 ] != '#' && narutos[i].x > 0 ) narutos[i].x--; }
 				break;
 			case KEY_RIGHT:
+				dir = 1;
 				{ int i; for( i = 0; i < nnarutos; i++ ) if( pf[ narutos[i].y*w+narutos[i].x+1] != '#' && narutos[i].x+1 < w ) narutos[i].x++; }
 				break;
 			case KEY_DOWN:
@@ -161,6 +163,7 @@ int gameloop( ) {
 				if( score == 8001 ) cheat = 1;
 #endif
 		}
+		{ int i, j; for( i = 0; i < nnarutos; i++ ) for( j = 0; j < nnarutos; j++ ) if( i != j && narutos[i].x == narutos[j].x ) narutos[i].x -= dir; }
 
 		{ int j, i; for( j = 0; j < h; j++ ) for( i = 0; i < w; i++ ) mvaddch( j, i, pf[j*w+i] ); }
 
