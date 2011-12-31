@@ -9,16 +9,17 @@ taikka huonolla c-kääntäjällä.
 kannattaa muistaa linkata curses.
 
 peli suoritetaan suorittamalla käännetty tiedosto.
-jos tykkää niin ykkösargumentiksi voi laittaa
-pf-tiedoston tai minkä tahansa tiedoston.
+jos tykkää niin argumenteiksi voi laittaa
+pf-tiedostoja tai mitä tahansa tiedostoja.
 
 esimerkkejä (olkoon binäärin nimi a.out):
  1:	./a.out
- 2:	./a.out derp.pf
+ 2:	./a.out herp.pf derp.pf
  3:	./a.out pamela_nude.jpg.exe
 
-pelissä tärkeintä on se, että olet naruto.
-sitä pelataan niin, että q-kirjain lopettaa pelin.
+pelissä tärkeintä on se, että olet yksi tai useampi naruto.
+naruton tunnistaan siitä, että se on X-kirjain.
+peliä pelataan niin, että q-kirjain lopettaa pelin.
 muut komennot:	vasen nuoli liikuttaa vasemmalle,
 		oikea nuoli liikuttaa oikealle,
 		alasnuoli aiheuttaa hypyn.
