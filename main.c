@@ -66,7 +66,9 @@ int game( char *_fname ) {
 		return 1;
 	}
 
+#ifdef cheat_code
 	cheat = 0;
+#endif
 	score = 1;
 
 	timeout( 40 );
