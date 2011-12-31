@@ -38,12 +38,13 @@ int main( int argc, char *argv[] ) {
 	nonl( );
 	keypad( stdscr, TRUE );
 
-	if( argc > 0 ) { int i; for( i = 1; i < argc; i++ ) game( argv[i] ); }
+	if( argc > 1 ) { int i; for( i = 1; i < argc; i++ ) game( argv[i] ); }
 	else game( __default_pf );
 
 	clear( );
 	timeout( 5000 );
-	if( totalscore/(argc-1) > 9000 ) {
+	int lvls = ( argc == 1 ? 1 : argc-1 );
+	if( totalscore/lvls > 9000 ) {
 		mvaddstr( 10, 10, "Nappa:  VEGETA, WHAT DOES YOUR SCOUTER SAY ABOUT HIS SCORE-PER-LEVEL VALUE?" ); getch( );
 		mvaddstr( 11, 10, "Vegeta: IT'S OVER NINE-THOUSAAAAAAAAAAND!!!!!!!!" ); getch( );
 		mvaddstr( 12, 10, "Nappa:  WHAT NINE-THOUSAND!? THERE'S NO WAY THAT CAN BE RIGHT, CAN IIIIIT!?!?" ); getch( );
