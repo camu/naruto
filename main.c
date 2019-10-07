@@ -8,6 +8,12 @@ typedef struct Naruto {
 	char canjump;
 } naruto;
 
+typedef struct Sasuke {
+	int a, b;
+	char canChidori;
+} sasuke;
+
+
 int game( char * );
 int loadpf( char * );
 int gameloop( );
